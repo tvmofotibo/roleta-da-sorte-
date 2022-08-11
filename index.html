@@ -1,32 +1,123 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
+<html lang="pt-BR">
+  <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>modelo  dde</title>
-    <link rel="stylesheet" href="estilo.css">
-</head>
-<body onload = carregar()>
-    <header>
-        <h1><strong>orado du dinha</h1>
-    </header>
-s    <section>
-        <div id="msg">
-            aqui vai aparecer a mesangem
-        </div>
-        <details aria-valuemax='data' id="de">
-            <div id="ano"></div>
-            <div id="mes"></div>
-            <div id="dia"></div>
-        </details>
-        <div id="foto">
-            <img id="image" src="manha.png" alt="foto do  dia">
-        </div>
-    </section>
-    <footer>
-        <p>&copy; Colapsus group</p>
-    </footer>
-    <script src="script.js"></script>
-</body>
-</html>
+    <meta name="viewport" content="width=device-width, initial-scale-1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Modelo de Exercicio</title>
+    <style type="text/css" media="all">
+      body{
+        background: rgb(78, 142, 236);
+        font: normal 15pt Arial;
+      }
+      header{
+        color: white;
+        text-align: center;
+        
+      }
+      section {
+        background: white;
+        border-radius: 10px;
+        padding: 15px;
+        width: 500px;
+        margin: auto;
+        box-shadow: 3px 3px 10px rgba(0, 0, 0, 8.363)
+        
+      }
+      footer {
+        color: white;
+        text-align: center;
+        font-style: italic;
+      }
+      input#n1{
+        border-radius: 40px;
+        box-shadow: 4px 4px 15px rgba(0,0,0, 8.363);
+        background: black;
+        color: white;
+      }
+      input#b{
+        border-radius: 40px;
+        box-shadow: 4px 4px 15px rgba(0,0,0, 8.363);
+        background: black;
+        color: white;
+      }
+    </style>
+    </head>
+    <body>
+      <header>
+        <h1>Roleta da sorte 👾</h1>
+        <p>boa sorte😈</p>
+        </header>
+        <section>
+          <div id="pe">
+            <p>digite um número entre 1 e 10   <input type="number" name="" id="n1" value="1" /></p>
+            <input type="button" name="" id="b" value="rodar a roleta" onclick="rodar()"/>
+            <p>Audio <input type="radio" name="orf" id="on" checked /> <label for="on">On</label><input type="radio" name="orf" id="of" /><label for="of">Off</label></p>
+          </div>
+         
+          <div id="msg">
+          </div>
+          
+       </section>
+       <footer>
+         <p>&copy; Colapsus group</p>
+         </footer>
+         <script>
+        const msg=document.getElementById("msg")
+         function rodar (){
+           var orf=document.getElementsByName("orf")[1]
+           var audioor=true
+           if (orf.checked){
+             audioor=false
+           }else{
+             audioor=true
+           }
+           try{
+              var n1r=document.getElementById("n1").value
+              var n1=Number(n1r)
+              var na=Math.round(Math.random()*9)+1
+              if (n1>10||n1<1){
+                throw new Error ("o número é maior que 10 ou menor que 1")
+              }
+           }catch(e){
+             document.write("erro: "+e.message+"<br>Recarrege a página pra tentar novamente!")
+             console.log("erro: "+e.message)
+             const b= new Audio('b.wav')
+             b.play()
+             var corpo = document.body
+             var video = document.createElement('video')
+             video.src="sejamelhor.mp4"
+             video.style.width=500
+             video.style.height=250
+             corpo.appendChild(video)
+             setTimeout(function (){
+               video.play()
+             }, 4000)
+           }finally{
+             
+           if (n1 == na){
+             msg.innerHTML="o número foi:"+na+"<br>"+"parabéns você acertou! <br>porque seu número foi:"+n1
+             if (audioor){
+                 const duas=new Audio('duas.wav')
+                 duas.play()
+             }
+           }else{
+             msg.innerHTML="o número foi:"+na+"<br>"+"aff, você errou porque seu número foi:"+n1+"<br>"+"mas, continue tentando!"
+             if(audioor){
+                 const tabom=new Audio('tabom.wav')
+                 tabom.play()
+             }
+           }
+          }
+         }
+          function veri(){
+            n1r=document.getElementById("n1").value
+            n1=Number(n1r)
+            if (n1 > 10){
+              mas.innerHTML="o número é maior que 10"
+              n1r=10
+              return true
+            }
+          }
+         </script>
+         </body>
+         </html>
